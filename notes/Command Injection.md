@@ -9,6 +9,7 @@ DVWA의 Low 레벨 환경에서 Command Injection 취약점을 확인하고, 공
 
 ## 결과
 ![whoami 명령어 실행 결과](image.png)
+
 `whoami` 결과: `www-data`
 웹 서버 권한으로 명령어 실행 가능
 내부 폴더 탐색 가능 (`ls`, `cat`, 등)
@@ -23,5 +24,6 @@ escapeshellcmd()를 이용해 특수문자를 escape해서 명령어 주입을 �
 
 ## 대응 결과
 ![escapeshellcmd 적용 후 명령어 주입 차단 결과](image-1.png)
+
 위 사진처럼 명령어 주입을 시도해도 아무것도 뜨지 않음
 쉘은 `127.0.0.1\; whoami` 이렇게 문자열로 받아들여서 명령어 주입을 차단한다.
