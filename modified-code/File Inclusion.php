@@ -13,7 +13,7 @@ $allowed_files = array( // 허용된 파일만 include하기 위해
 
 if(!in_array($file,$allowed_files)){ //요청한 파일이 배열에 없다면 에러메시지 출력
 echo 'Error: Invalid file requested.';
-$file ='include.php';
+exit;
 }
 
 ?>
