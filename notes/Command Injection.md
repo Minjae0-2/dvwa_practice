@@ -26,7 +26,7 @@ DVWA의 Low 레벨 환경에서 Command Injection 취약점을 확인하고, 공
 escapeshellcmd()를 이용해 특수문자를 escape해서 명령어 주입을 막는다.
 
 ## 대응 결과
-![escapeshellcmd 적용 후 명령어 주입 차단 결과](../screenshots/image-1.png)
+![escapeshellcmd 적용 후 명령어 주입 차단 결과](../screenshots/CI_Blocked.png)
 
 위 사진처럼 명령어 주입을 시도해도 아무것도 뜨지 않음
 

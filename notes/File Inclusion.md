@@ -4,7 +4,7 @@
 DVWA의 Low 레벨 환경에서 File Inclusion 취약점을 확인하고, 공격을 통해 웹 서버 내부의 보안 취약성을 확인한다.
 
 ## 공격 시도
-![파라미터 및 화면 내용](../screenshots/image-2.png)
+![파라미터 및 화면 내용](../screenshots/FI_Before_Attack.png)
 
 `?page=파일명` 파라미터 구조와 내용을 보고 내부적으로 include 같은 걸 쓰는 구조구나 파악.
 
@@ -30,10 +30,10 @@ basename()으로 디렉토리 경로를 제거해 공격을 1차적으로 막고
 그 외 요청은 모두 차단한다.
 
 ## 대응 결과
-![접근 실패 예시](../screenshots/image.png)
+![접근 차단 예시](../screenshots/FI_Blocked.png)
 
-위 사진처럼 허용되지 않은 쿼리는 'Error: Invalid file requested.' 라는 메시지를 출력하며 요청을 차단.
+위 사진처럼 허용되지 않은 쿼리는 에러메시지를 출력하며 요청을 차단.
 
-![접근 성공 예시](../screenshots/image-3.png)
+![접근 성공 예시](../screenshots/FI_Normal.png)
 
 위 사진과 같이 `include.php, file1.php, file2.php, file3.php` 만 쿼리로 허용한다.
