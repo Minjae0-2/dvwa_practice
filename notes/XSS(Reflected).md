@@ -32,3 +32,5 @@ Reflected XSS는 사용자의 요청에 포함된 악성 스크립트가 서버 
 ![XSS 차단 결과 화면](../screenshots/XSS_Reflected_Blocked.png)
 
 위 사진처럼 alert를 실행해도 스크립트가 문자 그대로 출력됨.
+
+이는 출력하기 전에 htmlspecialchars()함수로 <, > 같은 html 특수문자를 이스케이프 처리했기 때문이다. < 는 &lt;, >는 &gt;로 변환되어 저장되기 때문에, 브라우저는 일반 텍스트로 인식하게 된다.
