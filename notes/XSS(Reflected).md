@@ -13,7 +13,9 @@ DVWA의 Low 레벨 환경에서 Reflected XSS 취약점을 확인하고, 공격�
 입력값으로 <script>alert('XSS')</script>를 시도.
 
 ## 결과
-브라우저에서 alert('XSS') 경고문이 발생함.
+![XSS 공격 성공](../screenshots/XSS_Reflected_Attack.png)
+
+위 사진처럼 브라우저에서 alert('XSS') 경고문이 발생함.
 
 입력값이 필터링 없이 HTML에 삽입되어 스크립트 실행되는 것을 확인.
 
