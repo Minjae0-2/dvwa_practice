@@ -26,6 +26,8 @@ if( isset( $_GET[ 'Login' ] ) ) {
         if(empty($_GET['csrf_token'])||!hash_equals($_SESSION['csrf_token'],$_GET['csrf_token'])){
                 die('<pre>CSRF token validation failed</pre>');
         }
+         /*💡검증에 성공한 토큰은 폐기후 새로 발급 */
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
           /*💡로그인 시도 횟수가 5회 이상인지 확인 (계정 잠금) */
         if ($_SESSION['login_attempts'] >= 5) {

@@ -52,4 +52,8 @@ if($vulnerabilityFile=='low.php'){
 
 위 이미지 처럼 5회 이상으로 로그인 실패시 해당 메시지가 뜨게 하고, 로그인도 더 못하게 막았다.
 
-또한, CSRF 토큰 추가로 Burp Suite Intruder과 같은 도구로 무작위 대입 공격을 시도할 경우, 유효한 토큰이 없어 대부분 요청이 서버에 거부된다. 
+![BF 자동화 차단 결과 화면](../screenshots/BF_Blocked2.png)
+
+위 이미지 처럼 CSRF 토큰 추가로 Burp Suite Intruder과 같은 도구로 무작위 대입 공격을 시도할 경우, Intruder 공격은 최초에 가로챈 요청으로 보내는 방식이다.
+
+그러나 서버는 매 요청마다 유효한 CSRF토큰이 있는지 검증하는데, 공격자가 보낸 2번째 이후부터의 모든 요청은 유효한 토큰이 아니기에 위 이미지 처럼 CSRF token validation failed 라고 나온다.
