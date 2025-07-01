@@ -11,11 +11,11 @@ DVWA의 Low 레벨 환경에서 Insecure CAPTCHA 취약점을 확인하고, 공�
 ![JS 정보 수집 2 화면](../screenshots/CAPTHCA_Before_Attack2.png)
 
 위 사진과 같이 CAPTCHA 체크 후 정상적으로 폼 제출을 하면 페이로드로 g-recaptcha-response 필드가 서버로 보내진다.
-step은 1이다. step 1은 captcha 인증을 한다.
+이때 step값은 1로, CAPTCHA 인증을 한다.
 
 ![JS 정보 수집 3 화면](../screenshots/CAPTCHA_Before_Attack3.png)
 
-그 후, 새로운 폼을 생성해 캡처가 통과 됬다고 메시지가 나오고 change 버튼이 나온다. step이 2이고, 서버는 `CAPTCHA 검증 없이` 패스워드와 새로운 패스워드가 일치하는지만 확인한다. 
+그 후, 새로운 폼을 생성해 캡처가 통과 됐다고 메시지가 나오고 change 버튼이 나온다. step이 2이고, 서버는 `CAPTCHA 검증 없이` 패스워드와 새로운 패스워드가 일치하는지만 확인한다. 
 
 ## 공격 시도 
 취약점은 step=2에서 CAPTCHA 통과되었는지 확인이 없다는 것이다. 즉, 공격자는 step=1을 건너뛰고, step2에서 암호 변경 요청을 할 것이다.
@@ -35,6 +35,8 @@ step은 1이다. step 1은 captcha 인증을 한다.
 ![CAPTCHA 공격 성공](../screenshots/CAPTCHA_Attack2.png)
 
 서버는 step=2 요청을 받고 CAPTCHA 검증 없이 암호를 변경한다. 위 사진에서 볼 수 있듯이 Burp Suite의 응답창에서 `Password Changed` 메시지가 반환되어 공격이 성공함을 알 수 있다.
+
+공격자는 CAPTCHA 인증을 거치지 않고, step값을 2로 조작함으로서 인증 절차를 우회하고 서버에 직접 비밀번호 변경 요청을 보낼 수 있었다.
 
 ## 노트
 Insecure CAPTCHA 취약점은 서버의 구현 로직의 결함 때문에 생긴 일이다. 
